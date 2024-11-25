@@ -285,7 +285,7 @@ if __name__ == '__main__':
                         help='Learning Rate.')
     parser.add_argument('-lrf', '--lr_update_freq', type=int, default=0,
                         help='Learning rate update frequency in epochs.')
-    parser.add_argument('-da', '--da_library', type=str, default="torchvision",
+    parser.add_argument('-da', '--da_library', type=str, default="albumentations",
                         help='Data Augmentation library: < albumentations | torchvision >')
     parser.add_argument('-lvl', '--da_level', type=str, default="heavy",
                         help='Data Augmentation level: < light | medium | heavy >')

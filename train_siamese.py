@@ -271,7 +271,7 @@ if __name__ == '__main__':
                         help='Learning rate update frequency in epochs.')
     parser.add_argument('-ma', '--margin', type=float, default=1.0,
                         help='Triplet loss margin parameter.')
-    parser.add_argument('-da', '--da_library', type=str, default="torchvision",
+    parser.add_argument('-da', '--da_library', type=str, default="albumentations",
                         help='Data Augmentation library: < albumentations | torchvision >')
     parser.add_argument('-lvl', '--da_level', type=str, default="heavy",
                         help='Data Augmentation level: < light | medium | heavy >')
