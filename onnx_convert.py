@@ -1,7 +1,8 @@
 import os
 import torch
 from PIL import Image
-from torchvision.transforms import v2
+#from torchvision.transforms import v2
+from torchvision import transforms as T
 from models.classification import load_model
 from models.siamese import siamese_embeddings
 from argparse import ArgumentParser as argparse
@@ -47,11 +48,14 @@ print('{}_{} successfully loaded in {}'.format(args.backbone, args.model_type, d
 print('Number of parameters: {:d}\n'.format(n_params))
 
 # Generate Dummy input
-tform = v2.Compose([
-            v2.PILToTensor(),
-            v2.ToDtype(torch.float32, scale=True),
-            v2.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
-            ])
+#tform = v2.Compose([
+#            v2.PILToTensor(),
+#            v2.ToDtype(torch.float32, scale=True),
+#            v2.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+#            ])
+tform = T.Compose([
+        T.ToTensor(),
+        ])
 dummy_input = Image.new(MODE, RESOLUTION, (128, 255, 0))
 dummy_input = tform(dummy_input).unsqueeze(0)
 
