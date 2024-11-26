@@ -17,7 +17,10 @@ def load_model(backbone, weights="None", classes=3):
         else:
             model = models.alexnet()
         n_inputs = model.classifier[6].in_features
-        last_layer = nn.Linear(n_inputs, classes)
+        last_layer = nn.Sequential(
+            nn.Linear(n_inputs, classes),
+            nn.Sigmoid(),
+        )
         model.classifier[6] = last_layer
     
     elif backbone == "densenet121":
@@ -26,7 +29,10 @@ def load_model(backbone, weights="None", classes=3):
         else:
             model = models.densenet121()
         n_inputs = model.classifier.in_features
-        last_layer = nn.Linear(n_inputs, classes)
+        last_layer = nn.Sequential(
+            nn.Linear(n_inputs, classes),
+            nn.Sigmoid(),
+        )
         model.classifier = last_layer
 
     elif backbone == "densenet161":
@@ -35,7 +41,10 @@ def load_model(backbone, weights="None", classes=3):
         else:
             model = models.densenet161()
         n_inputs = model.classifier.in_features
-        last_layer = nn.Linear(n_inputs, classes)
+        last_layer = nn.Sequential(
+            nn.Linear(n_inputs, classes),
+            nn.Sigmoid(),
+        )
         model.classifier = last_layer
 
     
@@ -45,7 +54,10 @@ def load_model(backbone, weights="None", classes=3):
         else:
             model = models.densenet169()
         n_inputs = model.classifier.in_features
-        last_layer = nn.Linear(n_inputs, classes)
+        last_layer = nn.Sequential(
+            nn.Linear(n_inputs, classes),
+            nn.Sigmoid(),
+        )
         model.classifier = last_layer
     
     elif backbone == "densenet201":
@@ -54,7 +66,10 @@ def load_model(backbone, weights="None", classes=3):
         else:
             model = models.densenet201()
         n_inputs = model.classifier.in_features
-        last_layer = nn.Linear(n_inputs, classes)
+        last_layer = nn.Sequential(
+            nn.Linear(n_inputs, classes),
+            nn.Sigmoid(),
+        )
         model.classifier = last_layer
 
     elif backbone == "efficientnet_v2_l":
@@ -63,7 +78,10 @@ def load_model(backbone, weights="None", classes=3):
         else:
             model = models.efficientnet_v2_l()
         n_inputs = model.classifier[1].in_features
-        last_layer = nn.Linear(n_inputs, classes)
+        last_layer = nn.Sequential(
+            nn.Linear(n_inputs, classes),
+            nn.Sigmoid(),
+        )
         model.classifier[1] = last_layer
 
     elif backbone == "efficientnet_v2_m":
@@ -72,7 +90,10 @@ def load_model(backbone, weights="None", classes=3):
         else:
             model = models.efficientnet_v2_m()
         n_inputs = model.classifier[1].in_features
-        last_layer = nn.Linear(n_inputs, classes)
+        last_layer = nn.Sequential(
+            nn.Linear(n_inputs, classes),
+            nn.Sigmoid(),
+        )
         model.classifier[1] = last_layer
 
     elif backbone == "efficientnet_v2_s":
@@ -81,7 +102,10 @@ def load_model(backbone, weights="None", classes=3):
         else:
             model = models.efficientnet_v2_s()
         n_inputs = model.classifier[1].in_features
-        last_layer = nn.Linear(n_inputs, classes)
+        last_layer = nn.Sequential(
+            nn.Linear(n_inputs, classes),
+            nn.Sigmoid(),
+        )
         model.classifier[1] = last_layer
 
     elif backbone == "inception_v3":
@@ -90,7 +114,10 @@ def load_model(backbone, weights="None", classes=3):
         else:
             model = models.inception_v3()
         n_inputs = model.fc.in_features
-        last_layer = nn.Linear(n_inputs, classes)
+        last_layer = nn.Sequential(
+            nn.Linear(n_inputs, classes),
+            nn.Sigmoid(),
+        )
         model.fc = last_layer
 
     elif backbone == "maxvit_t":
@@ -99,7 +126,10 @@ def load_model(backbone, weights="None", classes=3):
         else:
             model = models.maxvit_t()
         n_inputs = model.classifier[5].in_features
-        last_layer = nn.Linear(n_inputs, classes)
+        last_layer = nn.Sequential(
+            nn.Linear(n_inputs, classes),
+            nn.Sigmoid(),
+        )
         model.classifier[5] = last_layer
 
     elif backbone == "mobilenet_v2":
@@ -108,7 +138,10 @@ def load_model(backbone, weights="None", classes=3):
         else:
             model = models.mobilenet_v2()
         n_inputs = model.classifier[1].in_features
-        last_layer = nn.Linear(n_inputs, classes)
+        last_layer = nn.Sequential(
+            nn.Linear(n_inputs, classes),
+            nn.Sigmoid(),
+        )
         model.classifier[1] = last_layer
 
     elif backbone == "mobilenet_v3_small":
@@ -117,7 +150,10 @@ def load_model(backbone, weights="None", classes=3):
         else:
             model = models.mobilenet_v3_small()
         n_inputs = model.classifier[3].in_features
-        last_layer = nn.Linear(n_inputs, classes)
+        last_layer = nn.Sequential(
+            nn.Linear(n_inputs, classes),
+            nn.Sigmoid(),
+        )
         model.classifier[3] = last_layer
 
     elif backbone == "mobilenet_v3_large":
@@ -126,7 +162,10 @@ def load_model(backbone, weights="None", classes=3):
         else:
             model = models.mobilenet_v3_large()
         n_inputs = model.classifier[3].in_features
-        last_layer = nn.Linear(n_inputs, classes)
+        last_layer = nn.Sequential(
+            nn.Linear(n_inputs, classes),
+            nn.Sigmoid(),
+        )
         model.classifier[3] = last_layer
 
     elif backbone == "resnet18":
@@ -135,7 +174,10 @@ def load_model(backbone, weights="None", classes=3):
         else:
             model = models.resnet18()
         n_inputs = model.fc.in_features
-        last_layer = nn.Linear(n_inputs, classes)
+        last_layer = nn.Sequential(
+            nn.Linear(n_inputs, classes),
+            nn.Sigmoid(),
+        )
         model.fc = last_layer
 
     elif backbone == "resnet34":
@@ -144,7 +186,10 @@ def load_model(backbone, weights="None", classes=3):
         else:
             model = models.resnet34()
         n_inputs = model.fc.in_features
-        last_layer = nn.Linear(n_inputs, classes)
+        last_layer = nn.Sequential(
+            nn.Linear(n_inputs, classes),
+            nn.Sigmoid(),
+        )
         model.fc = last_layer
 
     elif backbone == "resnet50":
@@ -153,7 +198,10 @@ def load_model(backbone, weights="None", classes=3):
         else:
             model = models.resnet50()
         n_inputs = model.fc.in_features
-        last_layer = nn.Linear(n_inputs, classes)
+        last_layer = nn.Sequential(
+            nn.Linear(n_inputs, classes),
+            nn.Sigmoid(),
+        )
         model.fc = last_layer
             
     elif backbone == "resnet101":
@@ -162,7 +210,10 @@ def load_model(backbone, weights="None", classes=3):
         else:
             model = models.resnet101()
         n_inputs = model.fc.in_features
-        last_layer = nn.Linear(n_inputs, classes)
+        last_layer = nn.Sequential(
+            nn.Linear(n_inputs, classes),
+            nn.Sigmoid(),
+        )
         model.fc = last_layer
 
     elif backbone == "resnet152":
@@ -171,7 +222,10 @@ def load_model(backbone, weights="None", classes=3):
         else:
             model = models.resnet152()
         n_inputs = model.fc.in_features
-        last_layer = nn.Linear(n_inputs, classes)
+        last_layer = nn.Sequential(
+            nn.Linear(n_inputs, classes),
+            nn.Sigmoid(),
+        )
         model.fc = last_layer
 
     elif backbone == "swin_v2_t":
@@ -180,7 +234,10 @@ def load_model(backbone, weights="None", classes=3):
         else:
             model = models.swin_v2_t()
         n_inputs = model.head.in_features
-        last_layer = nn.Linear(n_inputs, classes)
+        last_layer = nn.Sequential(
+            nn.Linear(n_inputs, classes),
+            nn.Sigmoid(),
+        )
         model.head = last_layer
 
     elif backbone == "swin_v2_s":
@@ -189,7 +246,10 @@ def load_model(backbone, weights="None", classes=3):
         else:
             model = models.swin_v2_s()
         n_inputs = model.head.in_features
-        last_layer = nn.Linear(n_inputs, classes)
+        last_layer = nn.Sequential(
+            nn.Linear(n_inputs, classes),
+            nn.Sigmoid(),
+        )
         model.head = last_layer
 
     elif backbone == "swin_v2_b":
@@ -198,7 +258,10 @@ def load_model(backbone, weights="None", classes=3):
         else:
             model = models.swin_v2_b()
         n_inputs = model.head.in_features
-        last_layer = nn.Linear(n_inputs, classes)
+        last_layer = nn.Sequential(
+            nn.Linear(n_inputs, classes),
+            nn.Sigmoid(),
+        )
         model.head = last_layer
 
     elif backbone == "vgg16":
@@ -207,7 +270,10 @@ def load_model(backbone, weights="None", classes=3):
         else:
             model = models.vgg16()
         n_inputs = model.classifier[6].in_features
-        last_layer = nn.Linear(n_inputs, classes)
+        last_layer = nn.Sequential(
+            nn.Linear(n_inputs, classes),
+            nn.Sigmoid(),
+        )
         model.classifier[6] = last_layer
 
     elif backbone == "vgg19":
@@ -216,7 +282,10 @@ def load_model(backbone, weights="None", classes=3):
         else:
             model = models.vgg19()
         n_inputs = model.classifier[6].in_features
-        last_layer = nn.Linear(n_inputs, classes)
+        last_layer = nn.Sequential(
+            nn.Linear(n_inputs, classes),
+            nn.Sigmoid(),
+        )
         model.classifier[6] = last_layer
 
     elif backbone == "vit_b_16":
@@ -225,7 +294,10 @@ def load_model(backbone, weights="None", classes=3):
         else:
             model = models.vit_b_16()
         n_inputs = model.heads[0].in_features
-        last_layer = nn.Linear(n_inputs, classes)
+        last_layer = nn.Sequential(
+            nn.Linear(n_inputs, classes),
+            nn.Sigmoid(),
+        )
         model.heads[0] = last_layer
 
     elif backbone == "vit_b_32":
@@ -234,14 +306,17 @@ def load_model(backbone, weights="None", classes=3):
         else:
             model = models.vit_b_32()
         n_inputs = model.heads[0].in_features
-        last_layer = nn.Linear(n_inputs, classes)
+        last_layer = nn.Sequential(
+            nn.Linear(n_inputs, classes),
+            nn.Sigmoid(),
+        )
         model.heads[0] = last_layer
         
     return model
 
 if __name__ == '__main__':
     parser = argparse()
-    parser.add_argument('-b', '--backbone', type=str, default="vit_b_32",
+    parser.add_argument('-b', '--backbone', type=str, default="vgg16",
                         help='Conv-Net backbone.')
     parser.add_argument('-w', '--weights', type=str, default="none",
                         help="Model's initial Weights: < none | imagenet | /path/to/weights/ >")
