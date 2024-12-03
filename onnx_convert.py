@@ -13,7 +13,7 @@ parser.add_argument('-b', '--backbone', required=True,
 parser.add_argument('-t', '--model_type', default='clas', choices=['clas', 'siam'], 
                     help="Model type. Classiffication=clas, Siamese=siam")
 parser.add_argument('-w', '--weights', required=True, 
-                    help='Path to model weights file')
+                    help='Path to model .pth weights file')
 parser.add_argument('-c', '--classes', type=int, required=True,
                     help='Number of output classes')
 parser.add_argument('-W', '--width', type=int, default=320,
@@ -63,7 +63,8 @@ dummy_input = tform(dummy_input).unsqueeze(0)
 folder = os.path.dirname(args.weights)
 name = os.path.basename(args.weights).split('.')[0] + '.onnx'
 opt_path = os.path.join(folder, name)
-torch.onnx.export(model, dummy_input, opt_path)
+with torch.no_grad():
+    torch.onnx.export(model, dummy_input, opt_path)
 print('Model seved at:')
 print(opt_path)
 

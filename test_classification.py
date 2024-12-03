@@ -54,6 +54,24 @@ def test_model(test_list, model_folder, batch_size, jobs, model=None):
     scores_path = os.path.join(model_folder, 'scores.npz')
     np.savez(scores_path, scores=scores, labels=labels, dataset=test_list)
     print('\nScores saved at: \n{}\n'.format(scores_path))
+
+    # Save scores csv
+    import pandas as pd
+    from utils.utils import read_list
+    img_paths, gt_labels = read_list(test_list)
+    output_csv = os.path.join(model_folder, 'results.csv')
+    opt_dict = {
+        "image_path": img_paths,
+        "original_label": gt_labels,
+        "pred_label": labels,
+        "bona fide": scores[:,0],
+        "print": scores[:,1],
+        "screen": scores[:,2],
+        "mask": scores[:,3]
+    }
+    opt_df = pd.DataFrame(opt_dict)
+    opt_df.to_csv(output_csv)
+    print(output_csv)
     
     return labels, np.argmax(scores,axis=1)
 
