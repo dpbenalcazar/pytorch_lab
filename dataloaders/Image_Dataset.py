@@ -3,7 +3,8 @@ import numpy as np
 from PIL import Image
 from utils.utils import read_list
 from torch.utils.data import Dataset
-from torchvision.transforms import v2
+#from torchvision.transforms import v2
+from torchvision import transforms as T
 
 class Image_Dataset(Dataset):
     def __init__(self, list_path, args=None, img_size=None, transform=None, limit=None):
@@ -18,12 +19,14 @@ class Image_Dataset(Dataset):
             self.transform = None
 
         # Make transformation to convert to tensor
-        self.to_tensor = v2.Compose([
-                    v2.PILToTensor(),
-                    v2.ToDtype(torch.float32, scale=True),
-                    v2.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
-                    ])
-
+        #self.to_tensor = v2.Compose([
+        #            v2.PILToTensor(),
+        #            v2.ToDtype(torch.float32, scale=True),
+        #            v2.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+        #            ])
+        self.to_tensor = T.Compose([
+            T.ToTensor(),
+        ])
         # Read dataset from list
         img_paths, labels = read_list(list_path, limit)
         self.images = img_paths
